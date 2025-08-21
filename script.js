@@ -155,3 +155,47 @@ themeBtn.addEventListener("click", () => {
     showOutcome(null);
   });
 })();
+
+//Dino Game 
+(() => {
+  const dino = document.getElementById("dino");
+  const cactus = document.getElementById("cactus");
+  const statusDino = document.getElementById("dinoStatus");
+  const restartBtn = document.getElementById("restartDino");
+  let isJumping = false;
+  let isAlive = true;
+
+  function jump() {
+    if (isJumping || !isAlive) return;
+    isJumping = true;
+    dino.classList.add("jump");
+    setTimeout(() => {
+      dino.classList.remove("jump");
+      isJumping = false;
+    }, 500);
+  }
+
+  document.addEventListener("keydown", e => {
+    if (e.code === "Space" || e.code === "ArrowUp") jump();
+  });
+
+  // Check collision
+  let check = setInterval(() => {
+    if (!isAlive) return;
+    const dinoBottom = parseInt(window.getComputedStyle(dino).getPropertyValue("bottom"));
+    const cactusRight = parseInt(window.getComputedStyle(cactus).getPropertyValue("right"));
+
+    if (cactusRight > (600 - 30 - 25) && cactusRight < (600 - 30) && dinoBottom < 50) {
+      statusDino.textContent = "Game Over! You hit the cactus.";
+      isAlive = false;
+      cactus.style.animation = "none";
+    }
+  }, 50);
+
+  restartBtn.onclick = () => {
+    isAlive = true;
+    cactus.style.animation = "cactusMove 2s linear infinite";
+    statusDino.textContent = "Press SPACE or ↑ to jump!";
+  };
+})();
+
