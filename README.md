@@ -1,3 +1,2 @@
 # fuwacchi.github.io
- mini task yes
- suffering yes
+ mini task yes I am suffering yes
