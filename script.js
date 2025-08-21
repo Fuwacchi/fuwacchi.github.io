@@ -46,3 +46,87 @@ document.getElementById("refreshFact").addEventListener("click", setFact);
 document.getElementById("toggleTheme").addEventListener("click", () => {
   document.body.classList.toggle("light");
 });
+
+document.getElementById("toggleTheme").addEventListener("click", () => {
+  document.body.classList.toggle("light");
+
+  // Play sound effect
+  const sfx = document.getElementById("toggleSound");
+  sfx.currentTime = 0;
+  sfx.play();
+});
+
+//Tic Tac Toe 
+(() => {
+  const cells = [...document.querySelectorAll(".cell")];
+  const resetBtn = document.getElementById("tttReset");
+  const statusEl = document.getElementById("tttStatus");
+  const moveSfx = document.getElementById("moveSound");
+  let board = Array(9).fill(null);
+  let gameOver = false;
+  const HUMAN = 'X', AI = 'O';
+
+  const LINES = [
+    [0,1,2],[3,4,5],[6,7,8],
+    [0,3,6],[1,4,7],[2,5,8],
+    [0,4,8],[2,4,6]
+  ];
+
+  function winner(b) {
+    for (let [a,b2,c] of LINES)
+      if (b[a] && b[a]===b[b2] && b[a]===b[c]) return b[a];
+    return null;
+  }
+  const isFull = b => b.every(Boolean);
+
+  function minimax(b, turn) {
+    const w = winner(b);
+    if (w===HUMAN) return -1;
+    if (w===AI) return 1;
+    if (isFull(b)) return 0;
+
+    let best = (turn===AI)? -Infinity : Infinity;
+    for (let i=0;i<9;i++) if (!b[i]) {
+      b[i]=turn;
+      let val=minimax(b, turn===AI?HUMAN:AI);
+      b[i]=null;
+      best = (turn===AI)? Math.max(best,val):Math.min(best,val);
+    }
+    return best;
+  }
+
+  function bestMove() {
+    let bestScore=-Infinity, move=null;
+    for (let i=0;i<9;i++) if(!board[i]){
+      board[i]=AI;
+      let score=minimax(board,HUMAN);
+      board[i]=null;
+      if(score>bestScore){bestScore=score; move=i;}
+    }
+    place(move,AI);
+  }
+
+  function place(i, who) {
+    if(board[i]||gameOver) return;
+    board[i]=who;
+    cells[i].textContent=who;
+    cells[i].disabled=true;
+    let w=winner(board);
+    if(w){statusEl.textContent=(w===AI?"AI wins":"You win!?"); gameOver=true; return;}
+    if(isFull(board)){statusEl.textContent="Draw"; gameOver=true; return;}
+  }
+
+  cells.forEach((c,i)=>c.onclick=()=>{
+    if(gameOver||board[i])return;
+    moveSfx.currentTime = 0;
+    moveSfx.play();
+    place(i,HUMAN);
+    if(!gameOver) bestMove();
+  });
+
+  resetBtn.onclick=()=>{
+    board=Array(9).fill(null); gameOver=false;
+    cells.forEach(c=>{c.textContent=""; c.disabled=false;});
+    statusEl.textContent="Your turn (X)";
+  };
+})();
