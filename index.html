@@ -1,10 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fuwa Amano</title>
+  <link rel="icon" type="image/jpg" href="images/profile.jpg">
+
+  <!-- Poppins Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-  <h1>Hello, I’m Fuwa Amano</h1>
-  <p>Test 1</p>
+  <div class="container">
+    <header>
+      <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic">
+      <h1>"Fuwacchi"</h1>
+      <p class="details">he/him • 22 • Philippines</p>
+      <p class="quote" id="quote"></p>
+    </header>
+
+    <section class="card highlight">
+      <h2>Did you know?</h2>
+      <p id="fact"></p>
+      <button id="refreshFact">⟳</button>
+    </section>
+
+    <div class="grid">
+      <section class="card">
+        <h2>About Me</h2>
+        <ul>
+          <li>BSIT student, aspiring game developer</li>
+          <li>Passionate about pixel-style games</li>
+          <li>Loves late-night coding and indie games</li>
+          <li>Enjoys ̶s̶u̶f̶f̶e̶r̶i̶n̶g̶  learning new programming languages</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Hobbies</h2>
+        <ul>
+          <li>Making small game prototypes</li>
+          <li>Drawing pixel art</li>
+          <li>Exploring indie games</li>
+          <li>Listening to lo-fi while coding</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Games</h2>
+        <ul>
+          <li>Valorant</li>
+          <li>League of legends</li>
+          <li>Until Then</li>
+          <li>Terraria</li>
+          <li>Gacha Games</li>
+        </ul>
+      </section>
+    </div>
+
+    <footer>
+      <button id="toggleTheme">🌙 Toggle Theme</button>
+      <p>© 2025 Fuwacchi</p>
+    </footer>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
