@@ -107,6 +107,20 @@ footer {
   color: #000;
   font-weight: 600;
 }
+/* Light mode */
+body.light {
+  background: linear-gradient(to bottom, #fdfdfd, #dcdcdc);
+  color: #1a1a1a;
+}
+
+body.light .card {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+body.light header h1 {
+  color: #7a7aff;
+}
 
 /* Tic Tac Toe */
 #tictactoe {
@@ -136,19 +150,4 @@ footer {
 #tttStatus {
   margin: 10px 0;
   font-weight: 600;
-}
-
-/* Light mode */
-body.light {
-  background: linear-gradient(to bottom, #fdfdfd, #dcdcdc);
-  color: #1a1a1a;
-}
-
-body.light .card {
-  background: #ffffff;
-  color: #1a1a1a;
-}
-
-body.light header h1 {
-  color: #7a7aff;
 }
