@@ -42,19 +42,17 @@ setFact();
 
 document.getElementById("refreshFact").addEventListener("click", setFact);
 
-// Theme toggle
+//Theme Toggle 
 document.getElementById("toggleTheme").addEventListener("click", () => {
-  document.body.classList.toggle("light");
-});
-
-document.getElementById("toggleTheme").addEventListener("click", () => {
+  // Toggle the theme
   document.body.classList.toggle("light");
 
-  // Play sound effect
+  // Play the SFX
   const sfx = document.getElementById("toggleSound");
   sfx.currentTime = 0;
   sfx.play();
 });
+
 
 //Tic Tac Toe 
 (() => {
