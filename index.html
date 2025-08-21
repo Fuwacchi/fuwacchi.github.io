@@ -16,79 +16,106 @@
 </head>
 <body>
   <div class="container">
-    <header>
-      <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic">
-      <h1>"Fuwacchi"</h1>
-      <p class="details">he/him • 22 • Philippines</p>
-      <p class="quote" id="quote"></p>
+
+       <header class="topbar">
+      <h1>Fuwa's hub</h1>
+      <button id="toggleTheme" class="theme-btn" aria-label="Toggle theme">🌙 Dark</button>
+      <audio id="toggleSound" src="sounds/Deploying Flashbang.mp3" preload="auto"></audio>
     </header>
 
-    <section class="card highlight">
-      <h2>Did you know?</h2>
-      <p id="fact"></p>
-      <button id="refreshFact">⟳</button>
+    <!-- Profile -->
+    <section class="profile card">
+      <img src="images/profile.jpg" alt="Profile picture" class="profile-pic">
+      <div class="profile-info">
+        <h2 class="name">"Fuwacchi"</h2>
+        <p class="details">he/him • 22 • Philippines</p>
+        <p id="quote" class="quote"></p>
+      </div>
     </section>
 
-    <div class="grid">
-      <section class="card">
-        <h2>About Me</h2>
+     <!-- Did you know -->
+    <section class="card highlight">
+      <div class="card-head">
+        <h3>Did you know?</h3>
+        <button id="refreshFact" class="action-btn" aria-label="New fact">🔄 New Fact</button>
+      </div>
+      <p id="fact" class="fact"></p>
+    </section>
+
+    <!-- Info grid -->
+    <section class="grid">
+      <article class="card">
+        <h3>About Me</h3>
         <ul>
           <li>BSIT student, aspiring game developer</li>
-          <li>Passionate about pixel-style games</li>
-          <li>Loves late-night coding and indie games</li>
-          <li>Enjoys ̶s̶u̶f̶f̶e̶r̶i̶n̶g̶  learning new programming languages</li>
+          <li>Passionate about pixel-style and indie games</li>
+          <li>Night-owl coder with lo-fi on loop</li>
+          <li>Always suffering with programming</li>
         </ul>
-      </section>
+      </article>
 
-      <section class="card">
-        <h2>Hobbies</h2>
+      <article class="card">
+        <h3>Hobbies</h3>
         <ul>
-          <li>Making small game prototypes</li>
-          <li>Drawing pixel art</li>
-          <li>Exploring indie games</li>
-          <li>Listening to lo-fi while coding</li>
+          <li>Rapid game prototyping</li>
+          <li>Pixel art & spritesheets</li>
+          <li>Exploring obscure JRPGs</li>
+          <li>UI/UX experiments for fun</li>
         </ul>
-      </section>
+      </article>
 
-      <section class="card">
-        <h2>Games</h2>
+      <article class="card">
+        <h3>Games</h3>
         <ul>
           <li>Valorant</li>
-          <li>League of legends</li>
-          <li>Until Then</li>
-          <li>Terraria</li>
-          <li>Gacha Games</li>
+          <li>League of Legend</li>
+          <li>Persona series</li>
+          <li>Gacha games</li>
+          <li>Indie games</li>
         </ul>
-      </section>
-
-       <!-- Tic Tac Toe -->
-    <section id="tictactoe">
-      <h2>Tic Tac Toe hehehe</h2>
-      <div class="board">
-        <button class="cell"></button>
-        <button class="cell"></button>
-        <button class="cell"></button>
-        <button class="cell"></button>
-        <button class="cell"></button>
-        <button class="cell"></button>
-        <button class="cell"></button>
-        <button class="cell"></button>
-        <button class="cell"></button>
-      </div>
-      <p id="tttStatus">Your turn (X)</p>
-      <button id="tttReset">Reset Game</button>
+      </article>
     </section>
-    </div>
 
-    <footer>
-      <button id="toggleTheme">🌙 Toggle Theme</button>
+        <!-- Tic Tac Toe -->
+    <section class="card tictactoe">
+      <div class="card-head">
+        <h3>Tic Tac Toe hehehe</h3>
+        <button id="tttReset" class="reset-btn" aria-label="Reset game">🔁 Reset Game</button>
+      </div>
+
+      <div class="board" aria-label="Tic Tac Toe board">
+        <button class="cell" aria-label="Cell 1"></button>
+        <button class="cell" aria-label="Cell 2"></button>
+        <button class="cell" aria-label="Cell 3"></button>
+        <button class="cell" aria-label="Cell 4"></button>
+        <button class="cell" aria-label="Cell 5"></button>
+        <button class="cell" aria-label="Cell 6"></button>
+        <button class="cell" aria-label="Cell 7"></button>
+        <button class="cell" aria-label="Cell 8"></button>
+        <button class="cell" aria-label="Cell 9"></button>
+      </div>
+
+      <p id="tttStatus" class="status">Your turn (X)</p>
+
+      <!--SFX-->
+      <audio id="moveSound" src="sounds/Persona 5 - Select Sound Effect.mp3" preload="auto"></audio>
+
+      <div id="aiWin" class="outcome" style="display:none;">
+        <img src="images/Lbozo.gif" alt="AI Wins!">
+      </div>
+      <div id="draw" class="outcome" style="display:none;">
+        <img src="images/pfft-duh.gif" alt="Draw">
+      </div>
+      <div id="humanWin" class="outcome" style="display:none;">
+        <img src="images/thanos-impossible.gif" alt="You Win!?">
+      </div>
+    </section>
+
+ <footer class="footer">
       <p>© 2025 Fuwacchi</p>
     </footer>
   </div>
-
-  <audio id="moveSound" src="sounds/Persona 5 - Select Sound Effect.mp3" preload="auto"></audio>
-  <audio id="toggleSound" src="sounds/Deploying Flashbang.mp3" preload="auto"></audio>
-
+  
   <script src="script.js"></script>
 </body>
 </html>
